@@ -5,6 +5,7 @@ import Q10BPEDComponent from "./customs/Q10BPEDComponent";
 import Q13BComponent from "./customs/Q13BComponent";
 import Q13BPEDComponent from "./customs/Q13BPEDComponent";
 import QVSetComponent from "./customs/QVSetComponent";
+import UlContainer from "./customs/UlContainer";
 
 const questions = [
     {
@@ -13,45 +14,43 @@ const questions = [
             const self = Number.parseInt(localStorage.getItem('self'));
             return`Do ${self === 1 ? 'you' : 'they'} have any of these life-threatening symptoms?`;
         },
-        trigger: `Q1B`
+        trigger: ({steps: {Q2V: {value}}}) => {
+            const age = Number.parseInt(value);
+            if(age >= 18) return 'Q1B';
+            if(age >= 2 && age <= 17) return 'Q1B-PED';
+        }
     },
     {
         id: `Q1B`,
-        message: ({steps: {Q2V: {value}}}) => {
-            const age = Number.parseInt(value);
-            if(age >= 18){
-                return `
-                - Bluish lips or face
-                - Severe and constant pain or pressure in the chest
-                - Extreme difficulty breathing (such as gasping for air, being unable to talk without catching
-                    your (their) breath, severe wheezing, nostrils flaring)
-                - New disorientation (acting confused)
-                - Unconscious or very difficult to wake up
-                - Slurred speech or difficulty speaking (new or worsening)
-                - New or worsening seizures
-                - Signs of low blood pressure (too weak to stand, dizziness, lightheaded, feeling cold, pale,
-                    clammy skin)
-                - Dehydration (dry lips and mouth, not urinating much, sunken eyes)
-                `;
-            }
-            if(age >= 2 && age <= 17){
-                return `
-                 Bluish lips or face
-                 Severe and constant pain or pressure in the chest
-                 Extreme difficulty breathing (such as gasping for air, being unable to walk or talk without
-                catching your (their) breath, severe wheezing, nostrils flaring, grunting, or using extra
-                muscles around the chest to help breathe)
-                 Disoriented (acting confused or very irritable)
-                 Unconscious or very difficult to wake up
-                 New or worsening seizures
-                 Signs of low blood pressure (too weak to stand, dizziness, lightheaded, feeling cold, pale,
-                clammy skin)
-                 Dehydration (dry lips and mouth, not urinating much, sunken eyes)
-                 Refusing to drink liquids
-                 Frequent vomiting
-                `;
-            }
-        },
+        component: <UlContainer items={[
+            'Bluish lips or face',
+            'Severe and constant pain or pressure in the chest',
+            'Extreme difficulty breathing (such as gasping for air, being unable to talk without catching your (their) breath, severe wheezing, nostrils flaring)',
+            'New disorientation (acting confused)',
+            'Unconscious or very difficult to wake up',
+            'Slurred speech or difficulty speaking (new or worsening)',
+            'New or worsening seizures',
+            'Signs of low blood pressure (too weak to stand, dizziness, lightheaded, feeling cold, pale, clammy skin)',
+            'Dehydration (dry lips and mouth, not urinating much, sunken eyes)',
+        ]}/>,
+        asMessage: true,
+        trigger: `Q1O`
+    },
+    {
+        id: "Q1B-PED",
+        component: <UlContainer items={[
+            'Bluish lips or face',
+            'Severe and constant pain or pressure in the chest',
+            'Extreme difficulty breathing (such as gasping for air, being unable to walk or talk without catching your (their) breath, severe wheezing, nostrils flaring, grunting, or using extra muscles around the chest to help breathe)',
+            'Disoriented (acting confused or very irritable)',
+            'Unconscious or very difficult to wake up',
+            'New or worsening seizures',
+            'Signs of low blood pressure (too weak to stand, dizziness, lightheaded, feeling cold, pale, clammy skin)',
+            'Dehydration (dry lips and mouth, not urinating much, sunken eyes)',
+            'Refusing to drink liquids',
+            'Frequent vomiting',
+        ]}/>,
+        asMessage: true,
         trigger: `Q1O`
     },
     {

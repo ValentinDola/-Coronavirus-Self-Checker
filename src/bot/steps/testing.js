@@ -5,9 +5,11 @@ const T2Component = () => {
     const [self] = useState(() => Number.parseInt(localStorage.getItem("self")));
     return (
         <CustomBubble>
-            <p>{self === 1 ? 'You' : 'They'} may be eligible for COVID-19 testing.</p>
-            <p>Visit your health department’s website or talk to your medical provider for more information.</p>
-            <p>To find a testing location near you, visit the <a href="https://www.hhs.gov">HHS website</a>.</p>
+            <div>
+                <p>{self === 1 ? 'You' : 'They'} may be eligible for COVID-19 testing.</p>
+                <p>Visit your health department’s website or talk to your medical provider for more information.</p>
+                <p>To find a testing location near you, visit the <a href="https://www.hhs.gov">HHS website</a>.</p>
+            </div>
         </CustomBubble>
     );
 };

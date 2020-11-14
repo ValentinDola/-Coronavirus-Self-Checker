@@ -26,12 +26,12 @@ const steps = () => {
         {
             id: "Disclaimer",
             message: `
-            The purpose of the Coronavirus Self-Checker is to help you make decisions about seeking appropriate medical care. 
-            This system is not intended for the diagnosis or treatment of disease, including COVID-19.
+            The purpose of the Coronavirus Self-Checker is to help you make decisions about seeking appropriate medical care. \n
+            This system is not intended for the diagnosis or treatment of disease, including COVID-19.\n
             This project was made possible through a partnership with the CDC Foundation and is enabled by 
-            Microsoft’s Azure platform. 
+            Microsoft’s Azure platform. \n
             CDC’s collaboration with a non-federal organization does not imply an endorsement of any one particular service, 
-            product, or enterprise.
+            product, or enterprise.\n
             `,
             trigger: "consent"
         },

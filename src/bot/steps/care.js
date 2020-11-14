@@ -32,7 +32,14 @@ const care = [
 
     {
         id: 'CM5',
-        message: 'Call a medical provider.',
+        message: () => {
+            const self = Number.parseInt(localStorage.getItem('self'));
+            return `
+            <<Call a medical provider.>>
+            Sorry ${self === 1 ? 'you' : 'they'} are not feeling well. ${self === 1 ? 'Your' : 'Their'} symptoms may be related to COVID-19. 
+            ${self === 1 ? 'You' : 'They'} also have medical conditions that may put ${self === 1 ? 'you' : 'them'} at risk of becoming more seriously ill.
+            `;
+        },
         trigger: "CM5B"
     },
     {
@@ -40,16 +47,15 @@ const care = [
         message: () => {
             const self = Number.parseInt(localStorage.getItem('self'));
             return `
-            Sorry ${self === 1 ? 'you' : 'they'} are not feeling well. ${self === 1 ? 'Your' : 'Their'} symptoms may be related to COVID-19. 
-            ${self === 1 ? 'You' : 'They'} also have medical conditions that may put ${self === 1 ? 'you' : 'them'} at risk of becoming more seriously ill.
-            • Call ${self === 1 ? 'your' : 'their'} medical provider, clinician advice line, or telemedicine provider. • ${self === 1 ? 'Stay' : 'Keep them'} home except to get medical care.
-            o Do not go to work, school, or public areas including grocery stores, pharmacies, or restaurants. Consider delivery options for food and medicine.
-            o Do not use public transportation or ride sharing
+            • Call ${self === 1 ? 'your' : 'their'} medical provider, clinician advice line, or telemedicine provider.\n
+            • ${self === 1 ? 'Stay' : 'Keep them'} home except to get medical care.\n
+            o Do not go to work, school, or public areas including grocery stores, pharmacies, or restaurants. Consider delivery options for food and medicine.\n
+            o Do not use public transportation or ride sharing\n
             • If ${self === 1 ? 'you' : 'they'} feel worse, and you think it is an emergency, call 911 or seek medical care
-            immediately.
-             Consider using telehealth services if available.
-             Learn how to take care of yourself or someone else who is sick. 
-            • Take these steps to help protect others from getting sick
+            immediately.\n
+             Consider using telehealth services if available.\n
+             Learn how to take care of yourself or someone else who is sick.\n
+            • Take these steps to help protect others from getting sick\n
             `;
         },
         trigger: "T2"
@@ -83,14 +89,14 @@ const care = [
         id: 'CM7B',
         message: () => {
             return `
-            Help protect others from getting sick:
-             Stay in your room as much as possible except to get medical care.
-             Cover your coughs and sneezes with a tissue or the inside of your elbow.
-             Wash your hands often with soap and water.
-             Avoid close contact with other people. Stay at least 6 feet away from other people.
-             Wear a mask when around others.
-             Clean and disinfect frequently touched surfaces in your room.
-             Monitor your health and notify a medical provider if you think you are getting sicker.
+            Help protect others from getting sick:\n
+             Stay in your room as much as possible except to get medical care.\n
+             Cover your coughs and sneezes with a tissue or the inside of your elbow.\n
+             Wash your hands often with soap and water.\n
+             Avoid close contact with other people. Stay at least 6 feet away from other people.\n
+             Wear a mask when around others.\n
+             Clean and disinfect frequently touched surfaces in your room.\n
+             Monitor your health and notify a medical provider if you think you are getting sicker.\n
             `;
         },
         trigger: "T2"
@@ -101,18 +107,18 @@ const care = [
         message: () => {
             const self = Number.parseInt(localStorage.getItem('self'));
             return `
-             ${self === 1 ? 'Stay' : 'Keep them'} home and take care of ${self === 1 ? 'yourself' : 'them'}. 
-             Call ${self === 1 ? 'your' : 'their'} medical provider if you get worse.
-             Sorry ${self === 1 ? 'you are' : 'your child is'} not feeling well. 
-             Your symptoms may be related to COVID-19. 
-              ${self === 1 ? 'Stay' : 'Keep them'} home except to get medical care.
-                o Do not go to work, school, or public areas including grocery stores, pharmacies, or restaurants.
-                 Consider delivery options for food and medicine.
-                o Do not use public transportation or ride sharing.
+             ${self === 1 ? 'Stay' : 'Keep them'} home and take care of ${self === 1 ? 'yourself' : 'them'}. \n
+             Call ${self === 1 ? 'your' : 'their'} medical provider if you get worse.\n
+             Sorry ${self === 1 ? 'you are' : 'your child is'} not feeling well. \n
+             Your symptoms may be related to COVID-19. \n
+              ${self === 1 ? 'Stay' : 'Keep them'} home except to get medical care.\n
+                o Do not go to work, school, or public areas including grocery stores, pharmacies, or restaurants.\n
+                 Consider delivery options for food and medicine.\n
+                o Do not use public transportation or ride sharing.\n
                  If ${self === 1 ? 'you' : 'they'} feel worse, and you think it is an emergency, call 911 or seek medical care
-                immediately.
-                 Learn how to take care of yourself or someone else who is sick.
-                 Take steps to help protect others from getting sick.
+                immediately.\n
+                 Learn how to take care of yourself or someone else who is sick.\n
+                 Take steps to help protect others from getting sick.\n
             `;
         },
         trigger: "T2"
@@ -123,18 +129,18 @@ const care = [
         message: () => {
             const self = Number.parseInt(localStorage.getItem('self'));
             return `
-             ${self === 1 ? 'Stay' : 'Keep them'} home and take care of ${self === 1 ? 'yourself' : 'them'}. 
-             Call ${self === 1 ? 'your' : 'their'} medical provider if you get worse.
-             Sorry ${self === 1 ? 'you are' : 'your child is'} not feeling well. 
-             Your symptoms may be related to COVID-19. 
-              ${self === 1 ? 'Stay' : 'Keep them'} home except to get medical care.
+             ${self === 1 ? 'Stay' : 'Keep them'} home and take care of ${self === 1 ? 'yourself' : 'them'}. \n\n
+             Call ${self === 1 ? 'your' : 'their'} medical provider if you get worse.\n\n
+             Sorry ${self === 1 ? 'you are' : 'your child is'} not feeling well. \n\n
+             Your symptoms may be related to COVID-19. \n\n
+              ${self === 1 ? 'Stay' : 'Keep them'} home except to get medical care.\n\n
                 o Do not go to work, school, or public areas including grocery stores, pharmacies, or restaurants.
                  Consider delivery options for food and medicine.
-                o Do not use public transportation or ride sharing.
+                o Do not use public transportation or ride sharing.\n\n
                  If ${self === 1 ? 'you' : 'they'} feel worse, and you think it is an emergency, call 911 or seek medical care
-                immediately.
-                 Learn how to take care of yourself or someone else who is sick.
-                 Take steps to help protect others from getting sick.
+                immediately.\n\n
+                 Learn how to take care of yourself or someone else who is sick.\n\n
+                 Take steps to help protect others from getting sick.\n\n
             `;
         },
         trigger: "CM6"
@@ -157,16 +163,16 @@ const care = [
         message: () => {
             const self = Number.parseInt(localStorage.getItem('self'));
             return `
-            Sorry ${self === 1 ? 'you' : 'they'} are not feeling well. ${self === 1 ? 'Your' : 'Their'} symptom(s) may be related to COVID-19.
-             Call ${self === 1 ? 'your' : 'their'} medical provider, clinician advice line, or telemedicine provider.
-             ${self === 1 ? 'Stay' : 'Keep them'} home except to get medical care.
-            o Do not go to work, school, or public areas including grocery stores, pharmacies, or restaurants. Consider delivery options for food and medicine.
-            o Do not use public transportation or ride sharing.
+            Sorry ${self === 1 ? 'you' : 'they'} are not feeling well. ${self === 1 ? 'Your' : 'Their'} symptom(s) may be related to COVID-19.\n
+             Call ${self === 1 ? 'your' : 'their'} medical provider, clinician advice line, or telemedicine provider.\n
+             ${self === 1 ? 'Stay' : 'Keep them'} home except to get medical care.\n
+            o Do not go to work, school, or public areas including grocery stores, pharmacies, or restaurants. Consider delivery options for food and medicine.\n
+            o Do not use public transportation or ride sharing.\n
              If ${self === 1 ? 'you' : 'they'} feel worse, and you think it is an emergency, call 911 or seek medical care
-            immediately.
-             Consider using telehealth services if available.
-             Learn how to take care of yourself or someone else who is sick.
-             Take steps to help protect others from getting sick.
+            immediately.\n
+             Consider using telehealth services if available.\n
+             Learn how to take care of yourself or someone else who is sick.\n
+             Take steps to help protect others from getting sick.\n
             `;
         },
         trigger: "CM6"
@@ -189,16 +195,16 @@ const care = [
         message: () => {
             const self = Number.parseInt(localStorage.getItem('self'));
             return `
-            Sorry ${self === 1 ? 'you' : 'they'} are not feeling well. ${self === 1 ? 'Your' : 'Their'} symptom(s) may be related to COVID-19.
-             Call ${self === 1 ? 'your' : 'their'} medical provider, clinician advice line, or telemedicine provider.
-             ${self === 1 ? 'Stay' : 'Keep them'} home except to get medical care.
-            o Do not go to work, school, or public areas including grocery stores, pharmacies, or restaurants. Consider delivery options for food and medicine.
-            o Do not use public transportation or ride sharing.
+            Sorry ${self === 1 ? 'you' : 'they'} are not feeling well. ${self === 1 ? 'Your' : 'Their'} symptom(s) may be related to COVID-19.\n
+             Call ${self === 1 ? 'your' : 'their'} medical provider, clinician advice line, or telemedicine provider.\n
+             ${self === 1 ? 'Stay' : 'Keep them'} home except to get medical care.\n
+            o Do not go to work, school, or public areas including grocery stores, pharmacies, or restaurants. Consider delivery options for food and medicine.\n
+            o Do not use public transportation or ride sharing.\n
              If ${self === 1 ? 'you' : 'they'} feel worse, and you think it is an emergency, call 911 or seek medical care
-            immediately.
-             Consider using telehealth services if available.
-             Learn how to take care of yourself or someone else who is sick.
-             Take steps to help protect others from getting sick.
+            immediately.\n
+             Consider using telehealth services if available.\n
+             Learn how to take care of yourself or someone else who is sick.\n
+             Take steps to help protect others from getting sick.\n
             `;
         },
         trigger: "T2"
@@ -221,16 +227,16 @@ const care = [
         message: () => {
             const self = Number.parseInt(localStorage.getItem('self'));
             return `
-            Sorry ${self === 1 ? 'you' : 'they'} are not feeling well. ${self === 1 ? 'Your' : 'Their'} symptom(s) may be related to COVID-19.
-             Call ${self === 1 ? 'your' : 'their'} medical provider, clinician advice line, or telemedicine provider.
-             ${self === 1 ? 'Stay' : 'Keep them'} home except to get medical care.
-            o Do not go to work, school, or public areas including grocery stores, pharmacies, or restaurants. Consider delivery options for food and medicine.
-            o Do not use public transportation or ride sharing.
+            Sorry ${self === 1 ? 'you' : 'they'} are not feeling well. ${self === 1 ? 'Your' : 'Their'} symptom(s) may be related to COVID-19.\n
+             Call ${self === 1 ? 'your' : 'their'} medical provider, clinician advice line, or telemedicine provider.\n
+             ${self === 1 ? 'Stay' : 'Keep them'} home except to get medical care.\n
+            o Do not go to work, school, or public areas including grocery stores, pharmacies, or restaurants. Consider delivery options for food and medicine.\n
+            o Do not use public transportation or ride sharing.\n
              If ${self === 1 ? 'you' : 'they'} feel worse, and you think it is an emergency, call 911 or seek medical care
-            immediately.
-             Consider using telehealth services if available.
-             Learn how to take care of yourself or someone else who is sick.
-             Take steps to help protect others from getting sick.
+            immediately.\n
+             Consider using telehealth services if available.\n
+             Learn how to take care of yourself or someone else who is sick.\n
+             Take steps to help protect others from getting sick.\n
             `;
         },
         trigger: "CM24-T2"
@@ -241,8 +247,8 @@ const care = [
         message: () => {
             const self = Number.parseInt(localStorage.getItem('self'));
             return `
-            Sorry ${self === 1 ? 'you' : 'they'} are feeling sick. Stay home (keep them home) and monitor your (their) symptoms. 
-            Call ${self === 1 ? 'your' : 'their'} medical provider if you get worse
+            Sorry ${self === 1 ? 'you' : 'they'} are feeling sick. Stay home (keep them home) and monitor your (their) symptoms. \n
+            Call ${self === 1 ? 'your' : 'their'} medical provider if you get worse\n
             `;
         },
         trigger: "CM10B"
@@ -264,11 +270,11 @@ const care = [
         message: () => {
             const self = Number.parseInt(localStorage.getItem('self'));
             return `
-            Here are some steps that may help ${self === 1 ? 'your' : 'them'} feel better:
-             Stay at home and rest.
-             Drink plenty of water and other clear liquids to prevent fluid loss (dehydration).
-             Cover your coughs and sneezes.
-             Wash your hands often with soap and water.
+            Here are some steps that may help ${self === 1 ? 'your' : 'them'} feel better:\n
+             Stay at home and rest.\n
+             Drink plenty of water and other clear liquids to prevent fluid loss (dehydration).\n
+             Cover your coughs and sneezes.\n
+             Wash your hands often with soap and water.\n
             `;
         },
         trigger: "T0"
@@ -295,11 +301,11 @@ const care = [
     {
         id: "CM15-T2",
         message: `
-        Contact the occupational health provider at your workplace.
-        Tell your occupational health provider (or supervisor) that you may have been in contact with someone with suspected COVID-19. You may be asked to wear a mask over your nose and mouth to protect yourself and those around you.
-         Check your temperature twice a day for 14 days.
+        Contact the occupational health provider at your workplace.\n
+        Tell your occupational health provider (or supervisor) that you may have been in contact with someone with suspected COVID-19. You may be asked to wear a mask over your nose and mouth to protect yourself and those around you.\n
+         Check your temperature twice a day for 14 days.\n
          Watch for COVID-19 symptoms. Learn more about COVID-19 and how you can protect
-        yourself and others on the CDC website.
+        yourself and others on the CDC website.\n
         `,
         trigger: "T2"
     },
@@ -315,7 +321,7 @@ const care = [
             const self = Number.parseInt(localStorage.getItem('self'));
             return `
             Watch for COVID-19 symptoms. If ${self === 1 ? 'you' : 'they'} develop symptoms, call ${self === 1 ? 'your' : 'their'} medical provider, 
-            clinician advice line, or telemedicine provider.
+            clinician advice line, or telemedicine provider.\n
             Learn more about COVID-19 and steps ${self === 1 ? 'you' : 'they'} can take to protect ${self === 1 ? 'yourself' : 'themselves'} and others on the CDC website.
             `;
         },
@@ -327,10 +333,10 @@ const care = [
         message: () => {
             const self = Number.parseInt(localStorage.getItem('self'));
             return `
-            Monitor for symptoms, wear a mask.
+            Monitor for symptoms, wear a mask.\n
             Watch for COVID-19 symptoms. If ${self === 1 ? 'you' : 'they'} develop symptoms, call your medical provider, clinician advice line, 
             or telemedicine provider. When around other people, ${self === 1 ? 'you' : 'they'} will be asked to wear a mask over ${self === 1 ? 'your' : 'their'}
-            nose and mouth to protect ${self === 1 ? 'yourself' : 'themselves'} and those around ${self === 1 ? 'you' : 'them'}. Masks should not be used for 
+            nose and mouth to protect ${self === 1 ? 'yourself' : 'themselves'} and those around ${self === 1 ? 'you' : 'them'}.\n Masks should not be used for 
             anyone who has trouble breathing, is unconscious, incapacitated, or otherwise unable to remove the mask on their own.
             `;
         },
@@ -342,10 +348,10 @@ const care = [
         message: () => {
             const self = Number.parseInt(localStorage.getItem('self'));
             return `
-            Monitor for symptoms, wear a mask.
+            Monitor for symptoms, wear a mask.\n
             Watch for COVID-19 symptoms. If ${self === 1 ? 'you' : 'they'} develop symptoms, call your medical provider, clinician advice line, 
-            or telemedicine provider. When around other people, ${self === 1 ? 'you' : 'they'} will be asked to wear a mask over ${self === 1 ? 'your' : 'their'}
-            nose and mouth to protect ${self === 1 ? 'yourself' : 'themselves'} and those around ${self === 1 ? 'you' : 'them'}. Masks should not be used for 
+            or telemedicine provider.\n When around other people, ${self === 1 ? 'you' : 'they'} will be asked to wear a mask over ${self === 1 ? 'your' : 'their'}
+            nose and mouth to protect ${self === 1 ? 'yourself' : 'themselves'} and those around ${self === 1 ? 'you' : 'them'}.\n Masks should not be used for 
             anyone who has trouble breathing, is unconscious, incapacitated, or otherwise unable to remove the mask on their own.
             `;
         },
@@ -357,13 +363,13 @@ const care = [
         message: () => {
             const self = Number.parseInt(localStorage.getItem('self'));
             return `
-            Monitor for symptoms, stay at home
-             Stay home for 14 days.
+            Monitor for symptoms, stay at home\n
+             Stay home for 14 days.\n
              Take ${self === 1 ? 'your' : 'their'} temperature twice a day and watch for symptoms of COVID-19. Practice
-            social distancing.
-            o Stay at least 6 feet away from others and stay out of crowded places.
-             If possible, stay away from people who are at higher risk for getting very sick from COVID- 19.
-             If ${self === 1 ? 'you' : 'they'} develop symptoms, follow CDC guidance.
+            social distancing.\n
+            o Stay at least 6 feet away from others and stay out of crowded places.\n
+             If possible, stay away from people who are at higher risk for getting very sick from COVID- 19.\n
+             If ${self === 1 ? 'you' : 'they'} develop symptoms, follow CDC guidance.\n
             `;
         },
         trigger: "T0"
@@ -372,9 +378,9 @@ const care = [
     {
         id: "CM19",
         message: `
-        Contact a medical provider.
-        This tool is intended for people 2 years or older.
-        Please call the child’s medical provider, clinician advice line, or telemedicine provider.
+        Contact a medical provider.\n
+        This tool is intended for people 2 years or older.\n
+        Please call the child’s medical provider, clinician advice line, or telemedicine provider.\n
         `,
         end: true
     },
@@ -405,8 +411,8 @@ const care = [
         message: () => {
             const self = Number.parseInt(localStorage.getItem('self'));
             return `
-            Contact an administrator or nurse at ${self === 1 ? 'your' : 'their'} school or daycare as soon as possible.
-            Tell the administrator or nurse at ${self === 1 ? 'your' : 'their'} school or daycare that ${self === 1 ? 'you' : 'they'} are feeling sick.
+            Contact an administrator or nurse at ${self === 1 ? 'your' : 'their'} school or daycare as soon as possible.\n
+            Tell the administrator or nurse at ${self === 1 ? 'your' : 'their'} school or daycare that ${self === 1 ? 'you' : 'they'} are feeling sick.\n
             `;
         },
         trigger: "T2"
@@ -417,8 +423,8 @@ const care = [
         message: () => {
             const self = Number.parseInt(localStorage.getItem('self'));
             return `
-            Contact a medical provider in the care center, nursing home, or homeless shelter where ${self === 1 ? 'you' : 'they'} live.
-            Tell a caregiver in ${self === 1 ? 'your' : 'their'} facility that ${self === 1 ? 'you' : 'they'} may have been in close contact with someone who may have COVID-19. 
+            Contact a medical provider in the care center, nursing home, or homeless shelter where ${self === 1 ? 'you' : 'they'} live.\n
+            Tell a caregiver in ${self === 1 ? 'your' : 'their'} facility that ${self === 1 ? 'you' : 'they'} may have been in close contact with someone who may have COVID-19. \n
             They can help prevent infections at ${self === 1 ? 'your' : 'their'} facility or shelter.
             `;
         },
@@ -427,13 +433,13 @@ const care = [
     {
         id: "CM25B-T2",
         message: `
-        Help protect others from getting sick:
-         Stay in your room as much as possible except to get medical care.
-         Cover your coughs and sneezes with a tissue or the inside of your elbow.
-         Clean your hands often.
-         Avoid close contact with other people. Stay at least 6 feet away from other people.
-         Wear a mask when around others, if possible.
-         Monitor your health and notify a medical provider if you start to feel sick.
+        Help protect others from getting sick:\n
+         Stay in your room as much as possible except to get medical care.\n
+         Cover your coughs and sneezes with a tissue or the inside of your elbow.\n
+         Clean your hands often.\n
+         Avoid close contact with other people. Stay at least 6 feet away from other people.\n
+         Wear a mask when around others, if possible.\n
+         Monitor your health and notify a medical provider if you start to feel sick.\n
         `,
         trigger: "T2"
     },
@@ -443,13 +449,13 @@ const care = [
         message: () => {
             const self = Number.parseInt(localStorage.getItem('self'));
             return `
-            Contact an administrator or nurse at ${self === 1 ? 'your' : 'their'} school or daycare.
+            Contact an administrator or nurse at ${self === 1 ? 'your' : 'their'} school or daycare.\n
             Tell an administrator or nurse at ${self === 1 ? 'your' : 'their'} school or daycare that ${self === 1 ? 'you' : 'they'} may have been in contact
-            with someone with suspected COVID-19.
-             Wear a mask over ${self === 1 ? 'your' : 'their'} nose and mouth to protect ${self === 1 ? 'you' : 'them'} and those around ${self === 1 ? 'you' : 'them'}.
-             Check ${self === 1 ? 'your' : 'their'} temperature twice a day for 14 days.
+            with someone with suspected COVID-19.\n
+             Wear a mask over ${self === 1 ? 'your' : 'their'} nose and mouth to protect ${self === 1 ? 'you' : 'them'} and those around ${self === 1 ? 'you' : 'them'}.\n
+             Check ${self === 1 ? 'your' : 'their'} temperature twice a day for 14 days.\n
              Watch for COVID-19 symptoms. Learn more about COVID-19 and how ${self === 1 ? 'you' : 'they'} can protect
-            ${self === 1 ? 'yourself' : 'themselves'} and others on the CDC website.
+            ${self === 1 ? 'yourself' : 'themselves'} and others on the CDC website.\n
             `;
         },
         trigger: "T2"
