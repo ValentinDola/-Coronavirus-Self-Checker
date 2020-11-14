@@ -1,0 +1,8 @@
+.Container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.rsc{width: 425px !important; height: 100vh}
+.rsc-content{height: calc(100% - 51px) !important;}
